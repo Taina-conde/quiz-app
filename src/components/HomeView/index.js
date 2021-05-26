@@ -1,6 +1,7 @@
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 const HomeView = () => {
+    
   return (
     <Grid
       container
@@ -15,7 +16,10 @@ const HomeView = () => {
         </Typography>
       </Grid>
       <Grid item>
-        
+        {/** TODO: FORM - select using formik */}
+      </Grid>
+      <Grid item>
+        {/**TODO: list of past results if there is any in localStorage */}
       </Grid>
     </Grid>
   );
