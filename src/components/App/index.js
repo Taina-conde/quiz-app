@@ -1,7 +1,7 @@
 import logo from '../../logo.svg';
 import './App.css';
 import HomeView from "../HomeView";
-import { Container } from "@material-ui/core";
+import  Container  from "@material-ui/core/Container";
 
 function App() {
   return (
