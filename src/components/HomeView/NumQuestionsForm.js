@@ -1,5 +1,5 @@
-import { Formik, Form, Field } from "formik";
-
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { getQuestions } from "../../utils/api/api";
 
 const NumQuestionsForm = () => {
   return (
@@ -17,6 +17,10 @@ const NumQuestionsForm = () => {
         return errors;
       }}
       onSubmit={(values, { setSubmitting }) => {
+          console.log('values', values)
+          
+          getQuestions(values.numQuestions)
+          
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
           setSubmitting(false);
