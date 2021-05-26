@@ -2,8 +2,17 @@ import { useFormik } from "formik";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { getQuestions } from "../../utils/api/api";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  btn: {
+    margin: theme.spacing(3),
+    
+  },
+}));
 
 const NumQuestionsForm = () => {
+  const classes = useStyles();
   const formik = useFormik({
     initialValues: {
       numQuestions: "",
@@ -14,11 +23,10 @@ const NumQuestionsForm = () => {
         errors.numQuestions = "Required";
       } else if (isNaN(Number(values.numQuestions))) {
         errors.numQuestions = "Enter a valid number";
-      }
-      else if (values.numQuestions.includes(".")) {
+      } else if (values.numQuestions.includes(".")) {
         errors.numQuestions = "Enter an integer";
       }
-      
+
       console.log("errors", errors);
       return errors;
     },
@@ -36,15 +44,12 @@ const NumQuestionsForm = () => {
         label="Enter number: "
         value={formik.values.numQuestions}
         onChange={formik.handleChange}
-        error={formik.touched.numQuestions && Boolean(formik.errors.numQuestions)}
+        error={
+          formik.touched.numQuestions && Boolean(formik.errors.numQuestions)
+        }
         helperText={formik.touched.numQuestions && formik.errors.numQuestions}
       />
-      <Button
-        variant="contained"
-        type="submit"
-        color="primary"
-        
-      >
+      <Button className = {classes.btn} variant="contained" type="submit" color="primary">
         Submit
       </Button>
     </form>
