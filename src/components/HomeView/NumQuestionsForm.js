@@ -1,19 +1,21 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import Button from '@material-ui/core/Button';
 import { getQuestions } from "../../utils/api/api";
 
 const NumQuestionsForm = () => {
   return (
     <Formik
-      initialValues={{ numQuestions: 0, }}
+      initialValues={{ numQuestions: "", }}
       validate = {values => {
         const errors = {};
         if (!values.numQuestions) {
           errors.numQuestions = 'Required';
         } else if (
-            typeof Number(values.numQuestions) !== "number"
+            isNaN(Number(values.numQuestions))
         ) {
           errors.numQuestions = 'Enter a number';
         }
+        console.log('errors', errors)
         return errors;
       }}
       onSubmit={(values, { setSubmitting }) => {
@@ -31,9 +33,9 @@ const NumQuestionsForm = () => {
         <Form>
           <Field type="text" name="numQuestions" />
           <ErrorMessage name="numQuestions" component="div" />
-          <button type="submit" disabled={isSubmitting}>
+          <Button variant = "contained" type= "submit" color= "primary" disabled={isSubmitting}>
             Submit
-          </button>
+          </Button>
         </Form>
       )}
     </Formik>
