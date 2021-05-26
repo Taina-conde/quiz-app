@@ -1,44 +1,53 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import Button from '@material-ui/core/Button';
+import { useFormik } from "formik";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 import { getQuestions } from "../../utils/api/api";
 
 const NumQuestionsForm = () => {
+  const formik = useFormik({
+    initialValues: {
+      numQuestions: "",
+    },
+    validate: (values) => {
+      const errors = {};
+      if (!values.numQuestions) {
+        errors.numQuestions = "Required";
+      } else if (isNaN(Number(values.numQuestions))) {
+        errors.numQuestions = "Enter a valid number";
+      }
+      else if (values.numQuestions.includes(".")) {
+        errors.numQuestions = "Enter an integer";
+      }
+      
+      console.log("errors", errors);
+      return errors;
+    },
+    onSubmit: (values) => {
+      console.log("values", values);
+
+      getQuestions(values.numQuestions);
+    },
+  });
   return (
-    <Formik
-      initialValues={{ numQuestions: "", }}
-      validate = {values => {
-        const errors = {};
-        if (!values.numQuestions) {
-          errors.numQuestions = 'Required';
-        } else if (
-            isNaN(Number(values.numQuestions))
-        ) {
-          errors.numQuestions = 'Enter a number';
-        }
-        console.log('errors', errors)
-        return errors;
-      }}
-      onSubmit={(values, { setSubmitting }) => {
-          console.log('values', values)
-          
-          getQuestions(values.numQuestions)
-          
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
-      }}
-    >
-      {({ isSubmitting }) => (
-        <Form>
-          <Field type="text" name="numQuestions" />
-          <ErrorMessage name="numQuestions" component="div" />
-          <Button variant = "contained" type= "submit" color= "primary" disabled={isSubmitting}>
-            Submit
-          </Button>
-        </Form>
-      )}
-    </Formik>
+    <form onSubmit={formik.handleSubmit}>
+      <TextField
+        id="numQuestions"
+        name="numQuestions"
+        label="Enter number: "
+        value={formik.values.numQuestions}
+        onChange={formik.handleChange}
+        error={formik.touched.numQuestions && Boolean(formik.errors.numQuestions)}
+        helperText={formik.touched.numQuestions && formik.errors.numQuestions}
+      />
+      <Button
+        variant="contained"
+        type="submit"
+        color="primary"
+        
+      >
+        Submit
+      </Button>
+    </form>
   );
 };
 export default NumQuestionsForm;
