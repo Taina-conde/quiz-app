@@ -1,5 +1,7 @@
 import logo from '../../logo.svg';
 import './App.css';
+import HomeView from "../HomeView";
+import { Container } from "@material-ui/core";
 
 function App() {
   return (
@@ -7,9 +9,10 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
       </header>
-      <div>
+      <Container maxWidth = "md">
         app
-      </div>
+        <HomeView/>
+      </Container>
     </div>
   );
 }
