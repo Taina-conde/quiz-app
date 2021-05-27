@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import { getQuestions } from "../../utils/api/api";
 import { makeStyles } from "@material-ui/core/styles";
 import Context from "../../context";
 

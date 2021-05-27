@@ -22,6 +22,7 @@ const QuizInitialButtons = () => {
         .then((questions) => {
             console.log('questions 1:', questions)
             ctx.onSaveQuestions(questions)
+            ctx.onSaveNumQuestions(0);
         })
   };
   return (
