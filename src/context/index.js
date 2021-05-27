@@ -34,6 +34,7 @@ export const ContextProvider = (props) => {
   return (
     <Context.Provider
       value={{
+        numQuestions,
         questions,
         currentResults,
         pastResults,

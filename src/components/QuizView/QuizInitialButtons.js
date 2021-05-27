@@ -17,6 +17,7 @@ const QuizInitialButtons = () => {
 
   const startHandler = () => {
     const numQuestions = ctx.numQuestions;
+    console.log('num of questions', numQuestions)
     getQuestions(numQuestions)
         .then((questions) => {
             console.log('questions 1:', questions)

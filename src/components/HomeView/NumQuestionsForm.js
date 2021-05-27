@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -15,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
 
 const NumQuestionsForm = () => {
   const ctx = useContext(Context);
+  const history = useHistory();
   const classes = useStyles();
   const formik = useFormik({
     initialValues: {
@@ -34,7 +36,8 @@ const NumQuestionsForm = () => {
     onSubmit: (values) => {
       const num = Number(values.numQuestions);
       console.log('num', num)
-      ctx.onSaveNumQuestions(num)
+      ctx.onSaveNumQuestions(num);
+      history.push("/quiz");
     },
   });
   return (
