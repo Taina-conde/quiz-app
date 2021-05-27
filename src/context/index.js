@@ -14,6 +14,9 @@ export const ContextProvider = (props) => {
   useEffect(() => {
     const storedPasResults = localStorage.getItem('pastResults');
     console.log('stored info', storedPasResults)
+    if (storedPasResults !== null) {
+        setPastResults(storedPasResults);
+    }
   }, [])
 
   return (
