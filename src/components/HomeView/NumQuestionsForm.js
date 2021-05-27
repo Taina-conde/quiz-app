@@ -26,14 +26,12 @@ const NumQuestionsForm = () => {
       } else if (values.numQuestions.includes(".")) {
         errors.numQuestions = "Enter an integer";
       }
-
-      console.log("errors", errors);
       return errors;
     },
     onSubmit: (values) => {
-      console.log("values", values);
-
-      getQuestions(values.numQuestions);
+      getQuestions(values.numQuestions)
+      .then(res => console.log('res', res));
+      
     },
   });
   return (

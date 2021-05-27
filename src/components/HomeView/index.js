@@ -17,7 +17,6 @@ const HomeView = () => {
         </Typography>
       </Grid>
       <Grid item>
-        {/** TODO: FORM - select using formik */}
         <NumQuestionsForm/>
       </Grid>
       <Grid item>
