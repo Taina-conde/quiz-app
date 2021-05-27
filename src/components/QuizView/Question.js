@@ -55,7 +55,7 @@ const Question = (props) => {
     <Grid item>
       <form onSubmit={formik.handleSubmit}>
         <FormControl component="fieldset">
-          <FormLabel component="legend">{questionText}</FormLabel>
+          <FormLabel component="legend">{id + ". " + questionText}</FormLabel>
           <RadioGroup aria-label="quiz" name="quiz" value = {formik.values.picked} onChange = {formik.handleChange}>
             {answers.map((answer, index) => (
               <FormControlLabel
@@ -72,7 +72,7 @@ const Question = (props) => {
 
           <FormHelperText className = {helperText === "You got it!" ? classes.correct : classes.incorrect }>{helperText}</FormHelperText>
           <Button
-          className = {helperText === "" ? classes.show : classes.noShow}
+            className = {helperText === "" ? classes.show : classes.noShow}
             type="submit"
             variant="outlined"
             color="primary"
