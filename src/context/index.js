@@ -7,6 +7,7 @@ const Context = React.createContext({
   pastResults: [],
   onSaveQuestions: (questions) => {},
   onSaveNumQuestions: (num) => {},
+  onSaveAnswer: (question, answer) => {},
 });
 
 export const ContextProvider = (props) => {
@@ -30,6 +31,12 @@ export const ContextProvider = (props) => {
   const saveNumQuestionsHandler = (num ) => {
       setNumQuestions(num);
   }
+  const saveAnswerHandler = (question, answer) => {
+      setCurrentResults({
+          ...currentResults,
+          [question] : answer
+      })
+  }
 
   return (
     <Context.Provider
@@ -40,6 +47,7 @@ export const ContextProvider = (props) => {
         pastResults,
         onSaveQuestions: saveQuestionsHandler,
         onSaveNumQuestions: saveNumQuestionsHandler,
+        onSaveAnswer : saveAnswerHandler,
       }}
     >
       {props.children}

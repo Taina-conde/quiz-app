@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useFormik } from "formik";
 import Grid from "@material-ui/core/Grid";
 import Radio from "@material-ui/core/Radio";
@@ -8,9 +8,11 @@ import FormControl from "@material-ui/core/FormControl";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormLabel from "@material-ui/core/FormLabel";
 import Button from "@material-ui/core/Button";
+import Context from "../../context";
 
 const Question = (props) => {
   const { question, id } = props;
+  const ctx = useContext(Context);
   const [helperText, setHelperText] = useState("");
   let questionText = question.question;
   const answers = question.incorrect_answers.concat(question.correct_answer);
@@ -26,7 +28,7 @@ const Question = (props) => {
       } else {
         setHelperText("Sorry, wrong answer!");
       }
-      
+      ctx.onSaveAnswer(questionText, values.picked)
     },
   });
 
