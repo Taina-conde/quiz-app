@@ -23,12 +23,13 @@ const Question = (props) => {
       picked: "",
     },
     onSubmit: (values) => {
-      if (values.picked === correctAnswer) {
+    const chosenAnswer = values.picked;
+      if (chosenAnswer === correctAnswer) {
         setHelperText("You got it!");
       } else {
         setHelperText("Sorry, wrong answer!");
       }
-      ctx.onSaveAnswer(questionText, values.picked)
+      ctx.onSaveAnswer(questionText, chosenAnswer, correctAnswer)
     },
   });
 

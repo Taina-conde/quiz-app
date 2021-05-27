@@ -31,11 +31,28 @@ export const ContextProvider = (props) => {
   const saveNumQuestionsHandler = (num ) => {
       setNumQuestions(num);
   }
-  const saveAnswerHandler = (question, answer) => {
+  const saveAnswerHandler = (questionText, chosenAnswer, correctAnswer) => {
+      let totalCorrect = currentResults.totalCorrect ? currentResults.totalCorrect : 0;
+      let totalIncorrect = currentResults.totalIncorrect ? currentResults.totalIncorrect : 0;
+      if (chosenAnswer === correctAnswer ) {
+          totalCorrect += 1;
+      } else {
+          totalIncorrect += 1;
+      }
+
       setCurrentResults({
           ...currentResults,
-          [question] : answer
+          totalCorrect,
+          totalIncorrect,
+          questions : {
+              ...currentResults.questions,
+              [questionText]: {
+                  correctAnswer,
+                  chosenAnswer
+              }
+          }
       })
+      console.log(currentResults)
   }
 
   return (
