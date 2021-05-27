@@ -23,6 +23,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.MuiContainer-root {
+  margin-top: 30px;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -41,3 +44,4 @@
     height: 60px;
   }
 }
+
