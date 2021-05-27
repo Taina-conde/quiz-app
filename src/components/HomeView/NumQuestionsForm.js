@@ -32,11 +32,8 @@ const NumQuestionsForm = () => {
       return errors;
     },
     onSubmit: (values) => {
-      getQuestions(values.numQuestions)
-      .then(questions => {
-        ctx.onSaveQuestions(questions)
-      });
-      
+      const num = Number(values.numQuestions);
+      ctx.onSaveNumQuestions(num)
     },
   });
   return (
