@@ -4,6 +4,7 @@ const Context = React.createContext({
   questions: [],
   currentResults: {},
   pastResults: [],
+  onSaveQuestions: (questions) => {},
 });
 
 export const ContextProvider = (props) => {
@@ -13,11 +14,15 @@ export const ContextProvider = (props) => {
 
   useEffect(() => {
     const storedPasResults = localStorage.getItem('pastResults');
-    console.log('stored info', storedPasResults)
+    console.log('stored in localStorage', storedPasResults)
     if (storedPasResults !== null) {
         setPastResults(storedPasResults);
     }
-  }, [])
+  }, []);
+
+  const saveQuestionsHandler = (questions) => {
+      setQuestions(questions);
+  }
 
   return (
     <Context.Provider
@@ -25,6 +30,7 @@ export const ContextProvider = (props) => {
         questions,
         currentResults,
         pastResults,
+        onSaveQuestions: saveQuestionsHandler,
       }}
     >
       {props.children}
