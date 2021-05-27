@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { useFormik } from "formik";
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -10,9 +11,26 @@ import FormLabel from "@material-ui/core/FormLabel";
 import Button from "@material-ui/core/Button";
 import Context from "../../context";
 
+const useStyles = makeStyles((theme) => ({
+    noShow: {
+      display: "none",
+    },
+    show: {
+        display: "block",
+    },
+    correct: {
+        color: theme.palette.success.main,
+    },
+    incorrect: {
+        color: theme.palette.error.main,
+    }
+  }));
+
+
 const Question = (props) => {
   const { question, id } = props;
   const ctx = useContext(Context);
+  const classes = useStyles();
   const [helperText, setHelperText] = useState("");
   let questionText = question.question;
   const answers = question.incorrect_answers.concat(question.correct_answer);
@@ -46,16 +64,19 @@ const Question = (props) => {
                 value = {answer}
                 control={<Radio />}
                 label={answer}
+                disabled = {helperText !== ""}
                 
               />
             ))}
           </RadioGroup>
-          <FormHelperText>{helperText}</FormHelperText>
+
+          <FormHelperText className = {helperText === "You got it!" ? classes.correct : classes.incorrect }>{helperText}</FormHelperText>
           <Button
+          className = {helperText === "" ? classes.show : classes.noShow}
             type="submit"
             variant="outlined"
             color="primary"
-            disabled={formik.values.picked === ""}
+            disabled={formik.values.picked === "" || helperText !== ""}
           >
             Check Answer
           </Button>

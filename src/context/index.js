@@ -28,7 +28,7 @@ export const ContextProvider = (props) => {
     setQuestions(questions);
   };
 
-  const saveNumQuestionsHandler = (num ) => {
+  const saveNumQuestionsHandler = (num) => {
       setNumQuestions(num);
   }
   const saveAnswerHandler = (questionText, chosenAnswer, correctAnswer) => {
@@ -39,7 +39,6 @@ export const ContextProvider = (props) => {
       } else {
           totalIncorrect += 1;
       }
-
       setCurrentResults({
           ...currentResults,
           totalCorrect,
@@ -52,7 +51,6 @@ export const ContextProvider = (props) => {
               }
           }
       })
-      console.log(currentResults)
   }
 
   return (
