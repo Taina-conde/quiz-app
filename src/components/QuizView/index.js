@@ -21,9 +21,7 @@ const QuizView = () => {
     <Grid
       container
       direction="column"
-      justify="center"
-      alignItems="center"
-      spacing={3}
+      spacing={5}
     >
       {questions.map((question, index) => (
         <Question key={index} question={question} id = {index + 1} />

@@ -12,11 +12,15 @@ import Button from "@material-ui/core/Button";
 import Context from "../../context";
 
 const useStyles = makeStyles((theme) => ({
+    formControl : {
+        display: "flex",
+    },
     noShow: {
       display: "none",
     },
     show: {
         display: "block",
+        alignSelf: "flex-end"
     },
     correct: {
         color: theme.palette.success.main,
@@ -54,7 +58,7 @@ const Question = (props) => {
   return (
     <Grid item>
       <form onSubmit={formik.handleSubmit}>
-        <FormControl component="fieldset">
+        <FormControl className = {classes.formControl}>
           <FormLabel component="legend">{id + ". " + questionText}</FormLabel>
           <RadioGroup aria-label="quiz" name="quiz" value = {formik.values.picked} onChange = {formik.handleChange}>
             {answers.map((answer, index) => (
