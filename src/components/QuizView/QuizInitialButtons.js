@@ -7,8 +7,7 @@ import { getQuestions } from "../../utils/api/api";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
-    alignItems: "stretch",
+    height: "100vh",
   },
 }));
 
@@ -25,7 +24,7 @@ const QuizInitialButtons = () => {
         })
   };
   return (
-    <Grid container className={classes.root} spacing={4}>
+    <Grid container className = {classes.root} spacing={4} alignItems = "center">
       <Grid item>
         <Button variant="contained">cancel</Button>
       </Grid>
