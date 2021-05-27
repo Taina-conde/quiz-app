@@ -33,6 +33,7 @@ const NumQuestionsForm = () => {
     },
     onSubmit: (values) => {
       const num = Number(values.numQuestions);
+      console.log('num', num)
       ctx.onSaveNumQuestions(num)
     },
   });
