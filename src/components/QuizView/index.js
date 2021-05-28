@@ -28,7 +28,7 @@ const QuizView = () => {
   const submitResultsHandler= () => {
     const resultsId = generateUID();
     ctx.onSaveResults(resultsId, currentResults);
-    history.push("/results/:resultsId")
+    history.push(`/results/${resultsId}`)
   }
 
   if (numQuestions !== 0) {

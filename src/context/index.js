@@ -54,13 +54,14 @@ export const ContextProvider = (props) => {
       })
   }
   const saveResultsHandler = (id, currentResults) => {
-    setPastResults({
-        ...pastResults,
+    const newPastResults = {
         [id] : {
             ...currentResults
         },
-
-    })
+    }
+    setPastResults(newPastResults);
+    
+    localStorage.setItem("pastResults", JSON.stringify(newPastResults));
   }
 
   return (
