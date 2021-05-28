@@ -4,6 +4,7 @@ import HomeView from "../HomeView";
 import  Container  from "@material-ui/core/Container";
 import QuizView from '../QuizView';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import ResultsView from '../ResultsView';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Container maxWidth = "md">
         <Route path = "/" exact component= {HomeView}/>
         <Route path = "/quiz" component = {QuizView} />
+        <Route path = "/results/:resultsId" component = {ResultsView}/>
       </Container>
     </Router>
   );
