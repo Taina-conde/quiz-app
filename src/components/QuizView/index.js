@@ -5,6 +5,8 @@ import Context from "../../context";
 import QuizInitialButtons from "./QuizInitialButtons";
 import Question from "./Question";
 import { makeStyles } from "@material-ui/core/styles";
+import { generateUID } from "../../utils/helpers";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   resultsBtn: {
@@ -13,14 +15,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 const QuizView = () => {
   const ctx = useContext(Context);
+  const history = useHistory();
   const { questions, numQuestions, currentResults } = ctx;
-  console.log("questions", questions);
+  
   const questionsAnsweredArr = currentResults.questions
     ? Object.keys(currentResults.questions)
     : [];
   const totalQuestionsAnswered = questionsAnsweredArr.length;
 
   const classes = useStyles();
+
+  const submitResultsHandler= () => {
+    const resultsId = generateUID();
+    ctx.onSaveResults(resultsId, currentResults);
+    history.push("/results/:resultsId")
+  }
 
   if (numQuestions !== 0) {
     return (
@@ -42,6 +51,7 @@ const QuizView = () => {
           variant="contained"
           color="primary"
           disabled={questions.length !== totalQuestionsAnswered}
+          onClick = {submitResultsHandler}
         >
           See results
         </Button>
