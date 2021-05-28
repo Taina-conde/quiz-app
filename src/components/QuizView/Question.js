@@ -10,6 +10,7 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormLabel from "@material-ui/core/FormLabel";
 import Button from "@material-ui/core/Button";
 import Context from "../../context";
+import he from 'he';
 
 const useStyles = makeStyles((theme) => ({
     formControl : {
@@ -39,6 +40,7 @@ const Question = (props) => {
   let questionText = question.question;
   const answers = question.incorrect_answers.concat(question.correct_answer);
   const correctAnswer = question.correct_answer;
+  const decodedQuestion = he.decode(questionText)
 
   const formik = useFormik({
     initialValues: {
@@ -51,7 +53,7 @@ const Question = (props) => {
       } else {
         setHelperText("Sorry, wrong answer!");
       }
-      ctx.onSaveAnswer(questionText, chosenAnswer, correctAnswer)
+      ctx.onSaveAnswer(decodedQuestion, chosenAnswer, correctAnswer)
     },
   });
 
@@ -59,7 +61,7 @@ const Question = (props) => {
     <Grid item>
       <form onSubmit={formik.handleSubmit}>
         <FormControl className = {classes.formControl}>
-          <FormLabel component="legend">{id + ". " + questionText}</FormLabel>
+          <FormLabel component="legend">{id + ". " + decodedQuestion}</FormLabel>
           <RadioGroup aria-label="quiz" name="quiz" value = {formik.values.picked} onChange = {formik.handleChange}>
             {answers.map((answer, index) => (
               <FormControlLabel
