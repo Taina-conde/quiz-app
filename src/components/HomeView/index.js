@@ -21,7 +21,6 @@ const HomeView = () => {
         <NumQuestionsForm/>
       </Grid>
       <Grid item>
-        {/**TODO: list of past results if there is any in localStorage */}
         <PastResultsList/>
       </Grid>
     </Grid>
