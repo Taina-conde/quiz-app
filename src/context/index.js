@@ -47,6 +47,7 @@ export const ContextProvider = (props) => {
           questions : {
               ...currentResults.questions,
               [questionText]: {
+                  text: questionText,
                   correctAnswer,
                   chosenAnswer
               }

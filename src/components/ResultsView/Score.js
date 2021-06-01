@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.success.main
   },
   incorrect: {
-      color: theme.palette.secondary.main
+      color: theme.palette.error.main
   }
   
 }));

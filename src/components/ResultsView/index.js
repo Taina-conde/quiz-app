@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Score from "./Score";
+import AnswersList from "./AnswersList";
 
 const useStyles = makeStyles((theme) => ({
   correctBox: {},
@@ -22,6 +23,7 @@ const ResultsView = () => {
         </Grid>
         <Grid item></Grid>
       </Grid>
+      <AnswersList resultsId = {resultsId} results = {pastResults[resultsId]}/>
     </>
   );
 };
