@@ -2,7 +2,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import AnswerItem from "./AnswerItem";
-import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 
 const AnswersList = (props) => {
   const classes = useStyles();
-  const { results, resultsId } = props;
+  const { results } = props;
   const questionsArr = Object.keys(results.questions);
   console.log("results na answersList", results);
   return (

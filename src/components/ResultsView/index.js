@@ -1,6 +1,5 @@
 import Grid from "@material-ui/core/Grid";
 import { useParams } from "react-router-dom";
-import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Score from "./Score";
 import AnswersList from "./AnswersList";
@@ -27,12 +26,12 @@ const ResultsView = () => {
     <>
       <Grid container spacing={3} justify="center">
         <Grid item>
-          <Score resultsId={resultsId} results={pastResults[resultsId]} />
+          <Score results={pastResults[resultsId]} />
         </Grid>
         <Grid item>
-          <AnswersList resultsId={resultsId} results={pastResults[resultsId]} />
+          <AnswersList results={pastResults[resultsId]} />
         </Grid>
-        <Grid item xs="12" >
+        <Grid item xs={12} >
           <Link component={RouterLink} to="/" className={classes.btn}>
             <ArrowBackIosIcon fontSize = "small" />
             <Typography variant="button">Back to home</Typography>
