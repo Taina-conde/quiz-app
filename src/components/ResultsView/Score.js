@@ -32,7 +32,7 @@ const Score = (props) => {
     <Paper className={classes.paper} elevation = {3}>
       <Grid container direction="column" justify="center" alignItems="center">
         <Grid item>
-          <Typography variant="caption">Your score:</Typography>
+          <Typography variant="caption" color = "textSecondary">Your score:</Typography>
         </Grid>
         <Grid item className={classes.score}>
           <Typography variant="h3">{score}%</Typography>
