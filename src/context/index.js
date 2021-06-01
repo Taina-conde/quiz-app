@@ -56,7 +56,8 @@ export const ContextProvider = (props) => {
   const saveResultsHandler = (id, currentResults) => {
     const newPastResults = {
         [id] : {
-            ...currentResults
+            ...currentResults,
+            timestamp: Date.now()
         },
     }
     setPastResults(newPastResults);
