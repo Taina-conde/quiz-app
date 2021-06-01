@@ -9,11 +9,11 @@ import IconButton from "@material-ui/core/IconButton";
 import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme) => ({
-  inline : {
-    display: "block"
-  }
-}))
+const useStyles = makeStyles(() => ({
+  block: {
+    display: "block",
+  },
+}));
 
 const PastResultItem = (props) => {
   const classes = useStyles();
@@ -36,7 +36,12 @@ const PastResultItem = (props) => {
         } `}
         secondary={
           <>
-            <Typography component="div" variant="body2" color="textSecondary" >
+            <Typography
+              component="span"
+              variant="body2"
+              color="textSecondary"
+              className={classes.block}
+            >
               Score - {score}%
             </Typography>
             {formattedDate}

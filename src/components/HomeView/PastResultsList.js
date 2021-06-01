@@ -3,15 +3,18 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import PastResultItem from "./PastResultItem";
 import Typography from "@material-ui/core/Typography";
+import { shadows } from "@material-ui/system";
+import Box from "@material-ui/core/Box";
 const useStyles = makeStyles((theme) => ({
-  root: {
+  item: {
     width: "100%",
-    maxWidth: 400,
+    minWidth: 320,
     backgroundColor: theme.palette.background.paper,
+    marginBottom: theme.spacing(3)
   },
   titleText: {
     textAlign: "center",
-    color: theme.palette.info.main
+    color: theme.palette.info.main,
   },
 }));
 const PastResultsList = () => {
@@ -29,12 +32,18 @@ const PastResultsList = () => {
           const numQuestions = Object.keys(storedPastResults[item].questions)
             .length;
           return (
-            <ListItem button key={index} className={classes.root}>
+            <Box
+              component={ListItem}
+              button
+              key={index}
+              className={classes.item}
+              boxShadow={1}
+            >
               <PastResultItem
                 numQuestions={numQuestions}
                 result={storedPastResults[item]}
               />
-            </ListItem>
+            </Box>
           );
         })}
       </List>
