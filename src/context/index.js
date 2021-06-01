@@ -42,6 +42,7 @@ export const ContextProvider = (props) => {
       totalCorrect += 1;
     } else {
       totalIncorrect += 1;
+      console.log("total incorrect", totalIncorrect)
     }
     setCurrentResults({
       ...currentResults,
@@ -70,6 +71,7 @@ export const ContextProvider = (props) => {
       };
     }
     setPastResults(newPastResults);
+    setCurrentResults({});
     localStorage.setItem("pastResults", JSON.stringify(newPastResults));
   };
 

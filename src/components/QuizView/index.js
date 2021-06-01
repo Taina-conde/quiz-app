@@ -24,6 +24,9 @@ const QuizView = () => {
   const totalQuestionsAnswered = questionsAnsweredArr.length;
 
   const classes = useStyles();
+  console.log('current results', currentResults)
+  console.log("questions length", questions.length)
+  console.log("totalquestionsanswered", totalQuestionsAnswered)
 
   const submitResultsHandler= () => {
     const resultsId = generateUID();
