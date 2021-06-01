@@ -7,6 +7,10 @@ import { formatDate } from "../../utils/helpers";
 const PastResultItem = (props) => {
   const { numQuestions, result } = props;
   const formattedDate = formatDate(result.timestamp);
+  const totalCorrectAnswers = result.totalCorrect;
+  const totalAnswers = result.totalCorrect + result.totalIncorrect;
+  const score = (totalCorrectAnswers/totalAnswers)*100;
+
   return (
     <>
       <ListItemAvatar>
@@ -15,7 +19,7 @@ const PastResultItem = (props) => {
         </Avatar>
       </ListItemAvatar>
       <ListItemText
-        primary={`${numQuestions} questions`}
+        primary={`${numQuestions} questions - score: ${score}%`}
         secondary={`answered at ${formattedDate}`}
       />
     </>
