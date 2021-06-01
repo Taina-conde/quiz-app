@@ -3,8 +3,8 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import PastResultItem from "./PastResultItem";
 import Typography from "@material-ui/core/Typography";
-import { shadows } from "@material-ui/system";
 import Box from "@material-ui/core/Box";
+import { useHistory } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   item: {
     width: "100%",
@@ -17,11 +17,18 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.info.main,
   },
 }));
+
+
 const PastResultsList = () => {
   const classes = useStyles();
+  const history = useHistory();
   const storedPastResults = JSON.parse(localStorage.getItem("pastResults"));
   console.log("stored past results", storedPastResults);
   const pastResultsKeys = Object.keys(storedPastResults);
+
+  const clickResultHandler = (id) => {
+    history.push(`/results/${id}`)  
+  }
   return (
     <>
       <Typography variant="subtitle2" className={classes.titleText}>
@@ -31,6 +38,7 @@ const PastResultsList = () => {
         {pastResultsKeys.map((item, index) => {
           const numQuestions = Object.keys(storedPastResults[item].questions)
             .length;
+            const id = item;
           return (
             <Box
               component={ListItem}
@@ -38,6 +46,7 @@ const PastResultsList = () => {
               key={index}
               className={classes.item}
               boxShadow={1}
+              onClick = {() => clickResultHandler(id)}
             >
               <PastResultItem
                 numQuestions={numQuestions}
