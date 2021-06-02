@@ -17,11 +17,15 @@ const useStyles = makeStyles(() => ({
 
 const PastResultItem = (props) => {
   const classes = useStyles();
-  const { numQuestions, result } = props;
+  const { numQuestions, result, resultId } = props;
   const formattedDate = formatDate(result.timestamp);
   const totalCorrectAnswers = result.totalCorrect;
   const totalAnswers = result.totalCorrect + result.totalIncorrect;
   const score = (totalCorrectAnswers / totalAnswers) * 100;
+
+  const deleteResultHandler = () => {
+    
+  }
 
   return (
     <>
@@ -49,7 +53,7 @@ const PastResultItem = (props) => {
         }
       />
       <ListItemSecondaryAction>
-        <IconButton edge="end" aria-label="delete">
+        <IconButton edge="end" aria-label="delete" onClick= {deleteResultHandler}>
           <DeleteIcon />
         </IconButton>
       </ListItemSecondaryAction>

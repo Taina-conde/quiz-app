@@ -51,6 +51,7 @@ const PastResultsList = () => {
               <PastResultItem
                 numQuestions={numQuestions}
                 result={storedPastResults[item]}
+                resultId = {id}
               />
             </Box>
           );

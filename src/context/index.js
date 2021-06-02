@@ -9,6 +9,7 @@ const Context = React.createContext({
   onSaveNumQuestions: (num) => {},
   onSaveAnswer: (question, answer) => {},
   onSaveResults: (id, currentResults) => {},
+  onDeleteResult: (id) => {},
 });
 
 export const ContextProvider = (props) => {
@@ -42,7 +43,7 @@ export const ContextProvider = (props) => {
       totalCorrect += 1;
     } else {
       totalIncorrect += 1;
-      console.log("total incorrect", totalIncorrect)
+      console.log("total incorrect", totalIncorrect);
     }
     setCurrentResults({
       ...currentResults,
@@ -75,6 +76,22 @@ export const ContextProvider = (props) => {
     localStorage.setItem("pastResults", JSON.stringify(newPastResults));
   };
 
+  const deleteResultHandler = (resultId) => {
+    let newPastResults = {};
+    const pastResults = JSON.parse(localStorage.getItem("pastResults"));
+    const pastResultsIdsArr = Object.keys(pastResults);
+    const pastResultsIdsArrWithoutDeletedResult = pastResultsIdsArr.filter(
+      (id) => id !== resultId
+    );
+    pastResultsIdsArrWithoutDeletedResult.map( id => {
+      newPastResults = {
+        ...newPastResults,
+        [id] : pastResults[id],
+      }
+    });
+    localStorage.setItem("pastResults", JSON.stringify(newPastResults));
+  };
+
   return (
     <Context.Provider
       value={{
@@ -86,6 +103,7 @@ export const ContextProvider = (props) => {
         onSaveNumQuestions: saveNumQuestionsHandler,
         onSaveAnswer: saveAnswerHandler,
         onSaveResults: saveResultsHandler,
+        onDeleteResult: deleteResultHandler,
       }}
     >
       {props.children}
