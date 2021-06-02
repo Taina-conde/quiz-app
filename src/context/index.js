@@ -83,12 +83,12 @@ export const ContextProvider = (props) => {
     const pastResultsIdsArrWithoutDeletedResult = pastResultsIdsArr.filter(
       (id) => id !== resultId
     );
-    pastResultsIdsArrWithoutDeletedResult.map( id => {
+    pastResultsIdsArrWithoutDeletedResult.map( id => (
       newPastResults = {
         ...newPastResults,
         [id] : pastResults[id],
       }
-    });
+    ));
     localStorage.setItem("pastResults", JSON.stringify(newPastResults));
   };
 
