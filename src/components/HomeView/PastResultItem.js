@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import AssignmentIcon from "@material-ui/icons/Assignment";
@@ -8,6 +9,7 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import IconButton from "@material-ui/core/IconButton";
 import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import Context from "../../context";
 
 const useStyles = makeStyles(() => ({
   block: {
@@ -17,6 +19,7 @@ const useStyles = makeStyles(() => ({
 
 const PastResultItem = (props) => {
   const classes = useStyles();
+  const ctx = useContext(Context);
   const { numQuestions, result, resultId } = props;
   const formattedDate = formatDate(result.timestamp);
   const totalCorrectAnswers = result.totalCorrect;
@@ -24,6 +27,7 @@ const PastResultItem = (props) => {
   const score = (totalCorrectAnswers / totalAnswers) * 100;
 
   const deleteResultHandler = () => {
+    ctx.onDeleteResult(resultId);
     
   }
 
@@ -52,8 +56,8 @@ const PastResultItem = (props) => {
           </>
         }
       />
-      <ListItemSecondaryAction>
-        <IconButton edge="end" aria-label="delete" onClick= {deleteResultHandler}>
+      <ListItemSecondaryAction >
+        <IconButton edge="end" aria-label="delete" onClick= {deleteResultHandler} >
           <DeleteIcon />
         </IconButton>
       </ListItemSecondaryAction>

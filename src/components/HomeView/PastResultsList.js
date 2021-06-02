@@ -46,6 +46,7 @@ const PastResultsList = () => {
               key={index}
               className={classes.item}
               boxShadow={1}
+              secondaryAction
               onClick = {() => clickResultHandler(id)}
             >
               <PastResultItem
