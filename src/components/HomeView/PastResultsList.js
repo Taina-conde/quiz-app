@@ -2,7 +2,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import PastResultItem from "./PastResultItem";
 import Typography from "@material-ui/core/Typography";
-
+import { useContext } from "react";
+import Context from "../../context";
 
 const useStyles = makeStyles((theme) => ({
   titleText: {
@@ -13,10 +14,10 @@ const useStyles = makeStyles((theme) => ({
 
 const PastResultsList = () => {
   const classes = useStyles();
+  const ctx = useContext(Context);
+  const {pastResults} = ctx;
   
-  const storedPastResults = JSON.parse(localStorage.getItem("pastResults"));
-  console.log("stored past results", storedPastResults);
-  const pastResultsKeys = Object.keys(storedPastResults);
+  const pastResultsKeys = Object.keys(pastResults);
 
   
   return (
@@ -26,14 +27,14 @@ const PastResultsList = () => {
       </Typography>
       <List component="section" aria-label="past results list">
         {pastResultsKeys.map((item, index) => {
-          const numQuestions = Object.keys(storedPastResults[item].questions)
+          const numQuestions = Object.keys(pastResults[item].questions)
             .length;
           const id = item;
           return (
             <PastResultItem
               key={index}
               numQuestions={numQuestions}
-              result={storedPastResults[item]}
+              result={pastResults[item]}
               resultId={id}
             />
            

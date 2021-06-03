@@ -4,7 +4,7 @@ const Context = React.createContext({
   numQuestions: 0,
   questions: [],
   currentResults: {},
-  pastResults: [],
+  pastResults: {},
   onSaveQuestions: (questions) => {},
   onSaveNumQuestions: (num) => {},
   onSaveAnswer: (question, answer) => {},
@@ -16,12 +16,13 @@ export const ContextProvider = (props) => {
   const [numQuestions, setNumQuestions] = useState(0);
   const [questions, setQuestions] = useState([]);
   const [currentResults, setCurrentResults] = useState({});
-  const [pastResults, setPastResults] = useState([]);
+  const [pastResults, setPastResults] = useState({});
+  
 
   useEffect(() => {
-    const storedPasResults = localStorage.getItem("pastResults");
-    if (storedPasResults !== null) {
-      setPastResults(storedPasResults);
+    const storedPastResults = JSON.parse(localStorage.getItem("pastResults"));
+    if (storedPastResults !== null) {
+      setPastResults(storedPastResults);
     }
   }, []);
 
@@ -90,6 +91,7 @@ export const ContextProvider = (props) => {
       }
     ));
     localStorage.setItem("pastResults", JSON.stringify(newPastResults));
+    setPastResults(newPastResults);
   };
 
   return (

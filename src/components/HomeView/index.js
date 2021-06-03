@@ -2,8 +2,8 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import NumQuestionsForm from "./NumQuestionsForm";
 import PastResultsList from "./PastResultsList";
-const HomeView = () => {
-    
+
+const HomeView = () => { 
   return (
     <Grid
       container
