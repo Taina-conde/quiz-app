@@ -64,7 +64,7 @@ const PastResultItem = (props) => {
                 color="textSecondary"
                 className={classes.block}
               >
-                Score - {score}%
+                Score - {Math.floor(score)}%
               </Typography>
               {formattedDate}
             </>
