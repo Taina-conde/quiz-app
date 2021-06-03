@@ -35,7 +35,7 @@ const Score = (props) => {
           <Typography variant="caption" color = "textSecondary">Your score:</Typography>
         </Grid>
         <Grid item className={classes.score}>
-          <Typography variant="h3">{score}%</Typography>
+          <Typography variant="h3">{Math.floor(score)}%</Typography>
         </Grid>
         <Grid container item justify = "center" alignItems = "center">
           <Grid item className = {classes.details}>
