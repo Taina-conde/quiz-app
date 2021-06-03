@@ -15,20 +15,21 @@ const useStyles = makeStyles((theme) => ({
 const PastResultsList = () => {
   const classes = useStyles();
   const ctx = useContext(Context);
-  const {pastResults} = ctx;
-  
+  const { pastResults } = ctx;
+
   const pastResultsKeys = Object.keys(pastResults);
 
-  
   return (
     <>
-      <Typography variant="subtitle2" className={classes.titleText}>
-        Previous results
-      </Typography>
+      {pastResultsKeys.length !== 0 && (
+        <Typography variant="subtitle2" className={classes.titleText}>
+          Previous results
+        </Typography>
+      )}
+
       <List component="section" aria-label="past results list">
         {pastResultsKeys.map((item, index) => {
-          const numQuestions = Object.keys(pastResults[item].questions)
-            .length;
+          const numQuestions = Object.keys(pastResults[item].questions).length;
           const id = item;
           return (
             <PastResultItem
@@ -37,7 +38,6 @@ const PastResultsList = () => {
               result={pastResults[item]}
               resultId={id}
             />
-           
           );
         })}
       </List>
