@@ -49,6 +49,7 @@ const QuizView = () => {
       {questions.map((question, index) => (
         <Question key={index} question={question} id={index + 1} />
       ))}
+  
       <Grid item className={classes.resultsBtn}>
         <Button
           variant="contained"
