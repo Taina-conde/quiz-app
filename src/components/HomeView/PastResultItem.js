@@ -45,7 +45,7 @@ const PastResultItem = (props) => {
   };
 
   return (
-    <Box boxShadow = {1}>
+    <Box boxShadow = {1} className = {classes.box}>
       <ListItem onClick={clickResultHandler} className={classes.item}>
         <ListItemAvatar>
           <Avatar>

@@ -68,7 +68,7 @@ const Question = (props) => {
                 key={index}
                 name = "picked"
                 value = {answer}
-                control={<Radio />}
+                control={<Radio color = "secondary" />}
                 label={answer}
                 disabled = {helperText !== ""}
                 

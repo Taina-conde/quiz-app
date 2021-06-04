@@ -9,6 +9,8 @@ const useStyles = makeStyles((theme) => ({
   titleText: {
     textAlign: "center",
     color: theme.palette.info.main,
+    marginTop: 10,
+    marginBottom: 10,
   },
 }));
 

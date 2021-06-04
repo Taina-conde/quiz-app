@@ -14,14 +14,14 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(2)
   },
   incorrect: {
-    backgroundColor: theme.palette.error.light,
+    backgroundColor: "rgba(254, 46, 46, 0.4)",
     borderWidth: "1px",
     borderStyle: "solid",
     borderColor: theme.palette.error.dark,
     width: "100%",
   },
   correct: {
-    backgroundColor: theme.palette.success.light,
+    backgroundColor: "rgba(4, 180, 49, 0.4)",
     borderWidth: "1px",
     borderStyle: "solid",
     borderColor: theme.palette.success.dark,
