@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 
   },
   box: {
-    height: "100vh",
+    minHeight: "100vh",
     backgroundColor: "white",
   }
 }))
